@@ -64,4 +64,7 @@ public class Shared {
         return name;
     }
 
+    public float getPI() {
+        return PI;
+    }
 }
