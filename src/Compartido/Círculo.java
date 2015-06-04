@@ -5,22 +5,24 @@ package Compartido;
  *
  * @author lalo
  */
-public class Shared {
+public class Círculo {
 
 
     private String name;
     private boolean available;
     private final float PI = (float) 3.1416;
-    private float radio;
+    public float radio;
+    public float radioSQR;
+    public float area;
 
 
-    public Shared() {
+    public Círculo() {
         this.name = "Transacciones de una Circunferencia";
         this.available = false;
         this.radio = (float) 0.0;
     }
 
-    public Shared(float radio) {
+    public Círculo(float radio) {
         this.name = "Transacciones de una Circunferencia";
         this.available = false;
         this.radio = radio;
@@ -50,12 +52,13 @@ public class Shared {
             wait();
         }
         available = false;
-        notify();
+
         return radio;
     }
 
     public synchronized String getName() throws InterruptedException {
         while (!available) {
+            Thread.sleep(5000);
             wait();
         }
         available = false;
@@ -64,7 +67,33 @@ public class Shared {
         return name;
     }
 
-    public float getPI() {
+    public synchronized void getArea() throws InterruptedException {
+        this.area = PI * radioSQR;
+        notify();
+    }
+
+    public synchronized void calculateRadioRadio() throws InterruptedException {
+        System.out.println("Esperando 5 segundos");
+        Thread.sleep(5000);
+        this.radioSQR = radio * radio;
+        notify();
+    }
+
+    public synchronized void calculateArea() throws InterruptedException {
+        System.out.println("Esperando 5 segundos");
+        Thread.sleep(5000);
+        this.area = PI * radioSQR;
+        notify();
+
+    }
+
+
+    public float getPI() throws InterruptedException {
+        while (!available) {
+            wait();
+        }
+        available = false;
+
         return PI;
     }
 }
