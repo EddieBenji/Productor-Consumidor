@@ -17,6 +17,6 @@ public class Consumer extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Desde consumidor: "+this.shared.getName());
+        //System.out.println("Desde consumidor: "+this.shared.getName());
     }
 }

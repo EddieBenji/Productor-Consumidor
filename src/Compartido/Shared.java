@@ -10,41 +10,53 @@ public class Shared {
 
     private String name;
     private boolean available;
+    private final float PI = (float) 3.1416;
+    private float radio;
 
 
     public Shared() {
-        this.name = "Objeto Compartido";
+        this.name = "Transacciones de una Circunferencia";
         this.available = false;
+        this.radio = (float) 0.0;
     }
 
-    public synchronized void setName(String name) {
+    public Shared(float radio) {
+        this.name = "Transacciones de una Circunferencia";
+        this.available = false;
+        this.radio = radio;
+    }
+
+    public synchronized void setName(String name) throws InterruptedException {
         while (available) {
-            try {
-                wait();
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
+            wait();
         }
         this.name = name;
         available = true;
 
-        System.out.println("\nEl programa se ha ido a dormir por 5 segundos..");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Despertó Programa!\n");
         notify();
     }
 
-    public synchronized String getName() {
+    public synchronized void setRadio(float radio) throws InterruptedException {
+        while (available) {
+            wait();
+        }
+        this.radio = radio;
+        available = true;
+        notify();
+    }
+
+    public synchronized float getRadio() throws InterruptedException {
         while (!available) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            wait();
+        }
+        available = false;
+        notify();
+        return radio;
+    }
+
+    public synchronized String getName() throws InterruptedException {
+        while (!available) {
+            wait();
         }
         available = false;
         notify();
