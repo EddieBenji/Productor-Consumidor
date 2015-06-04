@@ -15,8 +15,9 @@ public class App {
         Producer p = new Producer(shared);
 
 
-        p.start();
+
         c.start();
+        p.start();
 
 
     }

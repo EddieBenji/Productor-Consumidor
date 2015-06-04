@@ -27,6 +27,14 @@ public class Shared {
         }
         this.name = name;
         available = true;
+
+        System.out.println("\nEl programa se ha ido a dormir por 5 segundos..");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Despertó Programa!\n");
         notify();
     }
 
