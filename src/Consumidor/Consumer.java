@@ -17,6 +17,7 @@ public class Consumer extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Desde consumidor: "+this.shared.getName());
+        System.out.println("C. Consumidor quiere imprimir el nombre. ");
+        System.out.println("C. Desde consumidor: "+this.shared.getName());
     }
 }

@@ -16,7 +16,7 @@ public class Producer extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Cambiando nombre a compartido..");
-        this.shared.setName("Nuevo nombre desde el productor");
+        System.out.println("P. El productor cambiará el nombre ");
+        this.shared.setName("El productor ha cambiado el nombre");
     }
 }

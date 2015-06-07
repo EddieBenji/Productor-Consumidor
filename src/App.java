@@ -14,13 +14,7 @@ public class App {
         Consumer c = new Consumer(shared);
         Producer p = new Producer(shared);
 
-
-
         c.start();
         p.start();
-
-
     }
-
-
 }
