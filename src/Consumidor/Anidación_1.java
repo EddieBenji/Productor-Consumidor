@@ -8,6 +8,7 @@ import Compartido.Círculo;
  *
  * @author lalo
  */
+@SuppressWarnings("ALL")
 public class Anidación_1 extends Thread {
 
     public Círculo círculo;
@@ -20,24 +21,24 @@ public class Anidación_1 extends Thread {
     public void run() {
         //System.out.println("Desde consumidor: "+this.círculo.getName());
         try {
-            Anidación_2 a1 = new Anidación_2(círculo);
-            a1.start();
+            Anidación_2 a2 = new Anidación_2(círculo);
+            a2.start();
 
-            synchronized(a1){
+            synchronized(a2){
                 try{
                     System.out.println("2. Esperando a que se calcule el radio al cuadrado");
-                    a1.wait();
+                    a2.wait();
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }
 
-                System.out.println("2. El radio*radio es: " + a1.círculo.radioSQR);
+                System.out.println("2. El radio*radio es: " + a2.círculo.radioSQR);
             }
 
             this.círculo.calculateArea();
-            System.out.println("2. Area Calculada");
+            System.out.println("2. Área Calculada");
         }catch (Exception ex){
-
+            ex.printStackTrace();
         }
 
     }

@@ -21,7 +21,7 @@ public class Anidación_2 extends Thread {
             this.círculo.calculateRadioRadio();
             System.out.println("3. Radio al cuadrado calculado");
         }catch (Exception ex){
-
+            ex.printStackTrace();
         }
 
     }
