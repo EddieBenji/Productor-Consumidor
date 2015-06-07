@@ -61,3 +61,7 @@ crashlytics.properties
 crashlytics-build.properties
 
 
+/nbproject/
+/manifest.mf
+/build.xml
+/build/
