@@ -18,15 +18,14 @@ public class Anidación_2 extends Thread {
     @Override
     public void run() {
         try {
-            //Esto se hace para el manejo de si un hilo ha sido
-            //interrumpido o no:
-            if (!this.isInterrupted()) {
-                this.círculo.calculateRadioRadio();
-                System.out.println("3. Radio al cuadrado calculado");
-            }
+
+            this.círculo.calculateRadioRadio();
+            System.out.println("3. Radio al cuadrado calculado");
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+            System.out.println("\nSe interrumpió el proceso hijo, por lo tanto la aplicación se cerrará");
+
         }
 
     }

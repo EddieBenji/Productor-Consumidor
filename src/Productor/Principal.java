@@ -22,11 +22,12 @@ public class Principal {
             try{
                 System.out.println("1. Esperando a que se calcule el área para imprimirla");
                 a1.wait();
+                //System.out.println("1. El área es: " + a1.círculo.area);
             }catch(InterruptedException e){
                 e.printStackTrace();
             }
 
-            System.out.println("1. El área es: " + a1.círculo.area);
+
         }
     }
 
