@@ -16,7 +16,15 @@ public class Producer extends Thread {
 
     @Override
     public void run() {
-        System.out.println("P. El productor cambiará el nombre ");
-        this.shared.setName("El productor ha cambiado el nombre");
+        try {
+
+            System.out.println("P. El productor cambiará el nombre de la variable compartida");
+            this.shared.setName("Esta es la tarea de sistemas distribuidos!");
+
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+
+        }
     }
 }

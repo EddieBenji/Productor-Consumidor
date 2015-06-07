@@ -13,27 +13,24 @@ public class Shared {
 
 
     public Shared() {
-        this.name = "Objeto Compartido";
+        this.name = "";
     }
 
-    public synchronized void setName(String name) {
+    public synchronized void setName(String name) throws InterruptedException {
 
         this.name = name;
-        try {
-            System.out.println("Se ha cambiado el nombre del objeto compartido. \n");
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        System.out.println("Info: Se ha cambiado el nombre del objeto compartido. ");
+        Thread.sleep(5000);
+
         notify();
     }
 
-    public synchronized String getName() {
-        try {
-            System.out.println("Alguien quiso obtener el nombre pero no puede, tendrá que esperar\n");
+    public synchronized String getName() throws InterruptedException {
+
+        if (this.name.isEmpty()) {
+            System.out.println("Info: Alguien quiso obtener el nombre del objeto compartido " +
+                    "pero no puede, debido a que está vacío por lo que tendrá que esperar");
             wait();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
 
         return name;

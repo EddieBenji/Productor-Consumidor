@@ -11,13 +11,23 @@ public class Consumer extends Thread {
 
     private Shared shared;
 
-    public Consumer(Shared shared){
+    public Consumer(Shared shared) {
         this.shared = shared;
     }
 
     @Override
     public void run() {
-        System.out.println("C. Consumidor quiere imprimir el nombre. ");
-        System.out.println("C. Desde consumidor: "+this.shared.getName());
+
+        try {
+
+            System.out.println("C. Consumidor quiere imprimir el nombre de la variable compartida ");
+            System.out.println("C. Desde consumidor: " + this.shared.getName());
+
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+
+        }
     }
+
 }
