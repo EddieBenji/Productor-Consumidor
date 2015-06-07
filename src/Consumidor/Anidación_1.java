@@ -28,27 +28,25 @@ public class Anidación_1 extends Thread {
                     //Si no queremos interrumpir el proceso 2,
                     // comentamos la siguiente línea:
                     a2.interrupt();
+                    System.out.println("2. Esperando a que se calcule el radio al cuadrado");
+
                     if (!a2.isInterrupted()) {
-                        System.out.println("2. Esperando a que se calcule el radio al cuadrado");
                         a2.wait();
                     }else{
-                        System.out.println("2. Ha sido interrumpido");
-                        System.out.println("1. Calcularé el área. ");
+                        System.out.println("2. El proceso 3 ha sido interrumpido");
+                        System.out.println("2. Calcularé el área. ");
                         this.círculo.calculateRadioRadio();
                     }
-
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
                 System.out.println("2. El radio*radio es: " + a2.círculo.radioSQR);
             }
-
             this.círculo.calculateArea();
             System.out.println("2. Área Calculada");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 }
