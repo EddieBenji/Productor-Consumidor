@@ -13,22 +13,31 @@ public class Anidación_1 extends Thread {
 
     public Círculo círculo;
 
-    public Anidación_1(Círculo círculo){
+    public Anidación_1(Círculo círculo) {
         this.círculo = círculo;
     }
 
     @Override
     public void run() {
-        //System.out.println("Desde consumidor: "+this.círculo.getName());
         try {
             Anidación_2 a2 = new Anidación_2(círculo);
             a2.start();
 
-            synchronized(a2){
-                try{
-                    System.out.println("2. Esperando a que se calcule el radio al cuadrado");
-                    a2.wait();
-                }catch(InterruptedException e){
+            synchronized (a2) {
+                try {
+                    //Si no queremos interrumpir el proceso 2,
+                    // comentamos la siguiente línea:
+                    a2.interrupt();
+                    if (!a2.isInterrupted()) {
+                        System.out.println("2. Esperando a que se calcule el radio al cuadrado");
+                        a2.wait();
+                    }else{
+                        System.out.println("2. Ha sido interrumpido");
+                        System.out.println("1. Calcularé el área. ");
+                        this.círculo.calculateRadioRadio();
+                    }
+
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
@@ -37,7 +46,7 @@ public class Anidación_1 extends Thread {
 
             this.círculo.calculateArea();
             System.out.println("2. Área Calculada");
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
 

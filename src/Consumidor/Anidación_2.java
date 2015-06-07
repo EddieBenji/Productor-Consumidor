@@ -11,16 +11,21 @@ public class Anidación_2 extends Thread {
 
     public Círculo círculo;
 
-    public Anidación_2(Círculo círculo){
+    public Anidación_2(Círculo círculo) {
         this.círculo = círculo;
     }
 
     @Override
     public void run() {
         try {
-            this.círculo.calculateRadioRadio();
-            System.out.println("3. Radio al cuadrado calculado");
-        }catch (Exception ex){
+            //Esto se hace para el manejo de si un hilo ha sido
+            //interrumpido o no:
+            if (!this.isInterrupted()) {
+                this.círculo.calculateRadioRadio();
+                System.out.println("3. Radio al cuadrado calculado");
+            }
+
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
 
